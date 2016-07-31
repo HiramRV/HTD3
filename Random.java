@@ -1,3 +1,11 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Array;
+
+import static java.lang.System.*;
+
 /**
  * @author carlos
  * @param <T>
@@ -6,7 +14,7 @@
 public class Random<T> {
 
 	private int cantRandom;
-	
+	private Class<T> rand;
 	
 	/**
 	 * 
@@ -45,6 +53,31 @@ public class Random<T> {
 	 * @return
 	 */
 	public T[] LeerArchivo(String RutaArchivo) {
-		return null;
+		String str = "";
+		T[] array = (T[]) new Integer[cantRandom];
+		try {
+			FileReader f = new FileReader(RutaArchivo);
+			BufferedReader b = new BufferedReader(f);
+			try {
+				int j = 0;
+				while ((str = b.readLine()) != null) {
+					try {
+						Integer i = Integer.parseInt(str);
+						array[j] = (T) i;
+						j++;
+					} catch (Exception e) {
+						b.close();
+						return null;
+					}
+					
+				}
+				b.close();
+				return array;
+			} catch (IOException e) {
+				return null;
+			}
+		} catch (FileNotFoundException e) {
+			return null;
+		}
 	}
 }

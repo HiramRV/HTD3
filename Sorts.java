@@ -1,8 +1,9 @@
 /**
- * @author carlos
- * @param <T>
- *
- */
+*Sorts, Esta clase define los metodos sort a utilizar 
+*@version: 6.0
+*@author: Luis Sierra, 131074 // Carlos Solorzano, 08832 // Steven Rubio, 15044 // Diego Lopez, 141222
+*@since 2016-07-31
+*/
 public class Sorts<T> implements I_Sorts<T> {
 
 	
@@ -67,7 +68,8 @@ public T[] MergeSort(T[] a, T[] tmp, int left, int right, int rightEnd) {
 	            a[rightEnd] = tmp[rightEnd];
 	        }
 	            
-	        return (T[]) a;
+	        return a;
+	}
 
 	@Override
 	public T[] QuickSort(T[] array) {

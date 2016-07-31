@@ -32,7 +32,7 @@ public class Sorts<T> implements I_Sorts<T> {
 				}
 				
 			}
-			swap (datos, max, nOrdenados - 1);
+			swap1 (datos, max, nOrdenados - 1);
 		}
 		return datos;
 	}
@@ -113,7 +113,13 @@ public T[] MergeSort(T[] a, T[] tmp, int left, int right, int rightEnd) {
 	 * @param i
 	 * @param j
 	 */
-	private void swap(datos, int i, int j) {
+	private void swap(int i, int j) {
+		T temp = datos[i];
+		datos[i] = datos[j];
+		datos[j] = temp;
+	}
+	
+	private void swap1(datos, int i, int j) {
 		T temp = datos[i];
 		datos[i] = datos[j];
 		datos[j] = temp;

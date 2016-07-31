@@ -46,8 +46,11 @@ public class Sorts<T> implements I_Sorts<T> {
             tmp[k++] = a[right++];
 
         // Copy tmp back
-        for(int i = 0; i < num; i++, rightEnd--)
+        for(int i = 0; i < num; i++, rightEnd--){
             a[rightEnd] = tmp[rightEnd];
+        }
+            
+        return a
     }
 
 	@Override

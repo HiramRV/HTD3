@@ -15,10 +15,28 @@ public class Sorts<T> implements I_Sorts<T> {
 	}
 
 	@Override
-	public T[] SelectionSort(T[] array) {
-		// TODO Auto-generated method stub
-		return null;
+	//Ayuda de Java Structures, Duane A.Bailey
+	public T[] SelectionSort(T[] array, int n) {
+		datos = array;
+		int nOrdenados = n;
+		int index;
+		int max;
+		
+		while(nOrdenados > 0 ){
+			max = 0;
+			for(index = 1; index < nOrdenados; index ++)
+			{
+				if (datos[max] < datos[index]) 
+				{
+				max = index;
+				}
+				
+			}
+			swap (datos, max, nOrdenados - 1);
+		}
+		return datos;
 	}
+		
 
 	@Override
 	public T[] InsertionSort(T[] array) {
@@ -97,7 +115,7 @@ public class Sorts<T> implements I_Sorts<T> {
 	 * @param i
 	 * @param j
 	 */
-	private void swap(int i, int j) {
+	private void swap(datos, int i, int j) {
 		T temp = datos[i];
 		datos[i] = datos[j];
 		datos[j] = temp;

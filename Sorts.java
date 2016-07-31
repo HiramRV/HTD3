@@ -34,8 +34,52 @@ public class Sorts<T> implements I_Sorts<T> {
 
 	@Override
 	public T[] QuickSort(T[] array) {
-		// TODO Auto-generated method stub
-		return null;
+		datos = array;
+		recursive(0, array.length - 1);
+		return datos;
+	}
+	
+	/**
+	 * Método recursivo para ordenar arreglo
+	 * @param low
+	 * @param high
+	 */
+	private void recursive(int low, int high) {
+		int i = low;
+		int j = high;
+		int pivot = (int) datos[low + (high - low)/2];
+		while (i <= j) {
+			while ((int)datos[i] < pivot) {
+				i++;
+			}
+			
+			while ((int)datos[j] > pivot) {
+				j--;
+			}
+			
+			if (i <= j){
+				swap(i,j);
+				i++;
+				j--;
+			}
+		}
+		if (low < j) {
+			recursive(low, j);
+		}
+		if (i < high) {
+			recursive(i, high);
+		}
+	}
+	
+	/**
+	 * Intercambia de posición dos valores
+	 * @param i
+	 * @param j
+	 */
+	private void swap(int i, int j) {
+		T temp = datos[i];
+		datos[i] = datos[j];
+		datos[j] = temp;
 	}
 
 	/**
@@ -51,5 +95,4 @@ public class Sorts<T> implements I_Sorts<T> {
 	public void SetDatos(T datos[]) {
 		this.datos = datos;
 	}
-
 }

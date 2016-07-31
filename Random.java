@@ -60,7 +60,7 @@ public class Random<T> {
 			writer.write(cantRandom);
 		}
 		catch (IOException ex){
-			System.out.println("No se pudo crear el archivo '") 
+			System.out.println("No se pudo crear el archivo '" 
 	                + Ruta + "'");                  
 	        
 	        }

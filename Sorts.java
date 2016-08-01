@@ -42,6 +42,23 @@ public class Sorts<T> implements I_Sorts<T> {
 	@Override
 	public T[] InsertionSort(T[] array) {
 		// TODO Auto-generated method stub
+		datos=array;
+		int numerosOrd = 1;
+		int index;
+		while(numerosOrd < n){
+			int temp = data [numerosOrd];
+			for (index = numerosOrd; index > 0; index--){
+				if (temp < data[index - 1]){
+					data [index]=data[index-a];
+				}
+				else {
+					break;
+				}
+			}
+			data[index]=temp;
+			numerosOrd++;
+		}
+		
 		return null;
 	}
 

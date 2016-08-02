@@ -46,10 +46,12 @@ public class Main {
 					}
 					break;
 				case 3:
-					Integer[] arr2 = random.LeerArchivo("Random.txt");
-					Integer[] sorted2 = sorts.InsertionSort(arr2);
-					for (int i = 0; i != sorted2.length; i++) {
-						out.println(sorted2[i].toString());
+					Integer[] ar = random.LeerArchivo("Random.txt");
+					Integer[] sort = sorts.InsertionSort(ar);
+					out.println(sort.toString());
+					out.println(ar.toString());
+					for (int i = 0; i != sort.length; i++) {
+						out.println(sort[i].toString());
 					}
 					break;
 				case 4:

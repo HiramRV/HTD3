@@ -28,28 +28,21 @@ public class Sorts<T> implements I_Sorts<T> {
 	            array[i]  = (T) new Integer(smallerNumber);
 	        }
 	        return array;
-	    }
+	}
 
 	@Override
 	public T[] InsertionSort(T[] array) {
 		datos = array;
-		int n = array.length;
-		int numerosOrd = 1;
-		int index;
-		while(numerosOrd < n){
-			int temp = (int) datos[numerosOrd];
-			for (index = numerosOrd; index > 0; index--){
-				if (temp < (int)datos[index - 1]){
-					datos[index]=datos[index-n];
-				}else {
-					break;
-				}
+		int key;
+		int i;
+		for (int j = 0; j < array.length; j++) {
+			key = (int) array[j];
+			for (i = j; (i >= 0) && ((int)array[i] < j); i++) {
+				array[i+1] = array[i];
 			}
-			int x = (int)datos[index];
-			x =temp;
-			numerosOrd++;
+			array[i+1] = (T) new Integer(key);
 		}
-		return datos;
+		return array;
 	}
 
 	@Override

@@ -16,26 +16,19 @@ public class Sorts<T> implements I_Sorts<T> {
 
 	@Override
 	public T[] SelectionSort(T[] array) {
-		datos = array;
-		int n = array.length;
-		int nOrdenados = n;
-		int index;
-		int max;
-		
-		while(nOrdenados > 0 ){
-			max = 0;
-			for(index = 1; index < nOrdenados; index ++)
-			{
-				if ((int)datos[max] < (int)datos[index]) 
-				{
-				max = index;
-				}
-				
-			}
-			swap(max, nOrdenados - 1);
-		}
-		return datos;
-	}
+		 for (int i = 0; i < array.length - 1; i++)
+	        {
+	            int index = i;
+	            for (int j = i + 1; j < array.length; j++)
+	                if ((int)array[j] < (int)array[index])
+	                    index = j;
+
+	            int smallerNumber = (int)array[index]; 
+	            array[index] = array[i];
+	            array[i]  = (T) new Integer(smallerNumber);
+	        }
+	        return array;
+	    }
 
 	@Override
 	public T[] InsertionSort(T[] array) {

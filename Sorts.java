@@ -1,9 +1,8 @@
 /**
-*Sorts, Esta clase define los metodos sort a utilizar 
-*@version: 6.0
-*@author: Luis Sierra, 131074 // Carlos Solorzano, 08832 // Steven Rubio, 15044 // Diego Lopez, 141222
-*@since 2016-07-31
-*/
+ * @author carlos
+ * @param <T>
+ *
+ */
 public class Sorts<T> implements I_Sorts<T> {
 
 	
@@ -16,9 +15,9 @@ public class Sorts<T> implements I_Sorts<T> {
 	}
 
 	@Override
-	//Ayuda de Java Structures, Duane A.Bailey
-	public T[] SelectionSort(T[] array, int n) {
+	public T[] SelectionSort(T[] array) {
 		datos = array;
+		int n = array.length;
 		int nOrdenados = n;
 		int index;
 		int max;
@@ -33,65 +32,85 @@ public class Sorts<T> implements I_Sorts<T> {
 				}
 				
 			}
-			swap1 (datos, max, nOrdenados - 1);
+			swap(max, nOrdenados - 1);
 		}
 		return datos;
 	}
-		
 
 	@Override
-		public T[] InsertionSort(T[] array, int n) {
-			// TODO Auto-generated method stub
-			datos = array;
-			int numerosOrd = 1;
-			int index;
-			while(numerosOrd < n){
-				int temp = (int) datos[numerosOrd];
-				for (index = numerosOrd; index > 0; index--){
-					if (temp < (int)datos[index - 1]){
-						datos [index]=datos[index-n];
-					}else {
-						break;
-					}
+	public T[] InsertionSort(T[] array) {
+		datos = array;
+		int n = array.length;
+		int numerosOrd = 1;
+		int index;
+		while(numerosOrd < n){
+			int temp = (int) datos[numerosOrd];
+			for (index = numerosOrd; index > 0; index--){
+				if (temp < (int)datos[index - 1]){
+					datos[index]=datos[index-n];
+				}else {
+					break;
 				}
-				int x = (int)datos[index];
-				x =temp;
-				numerosOrd++;
 			}
-			
-			return null;
+			int x = (int)datos[index];
+			x =temp;
+			numerosOrd++;
 		}
+		return datos;
+	}
 
 	@Override
-		public T[] MergeSort(T[] array) {
-				Object[] tmp = array;
-			  	int left = ((int)array.length/2)-((int)array.length/4);
-			  	int right = ((int)array.length/2)+((int)array.length/4);
-			  	int rightEnd = ((int)array.length/2)+((int)array.length/4)-1;
-				int leftEnd = right - 1;
-		        int k = left;
-		        int num = rightEnd - left + 1;
+	public T[] MergeSort(T[] array) {
+        mergesort(0, array.length-1);
+		return datos;
+	}
 
-		        while(left <= leftEnd && right <= rightEnd)
-		            if((int)array[left] <=(int)array[right])
-		                tmp[k++] = array[left++];
-		            else
-		                tmp[k++] = array[right++];
+	/**
+	 * 
+	 * @param low
+	 * @param high
+	 */
+	private void mergesort(int low, int high) {
+	    if (low < high) {
+	      int middle = low + (high - low) / 2;
+	      mergesort(low, middle);
+	      mergesort(middle + 1, high);
+	      merge(low, middle, high);
+	    }
+	  }
 
-		        while(left <= leftEnd)    // Copy rest of first half
-		            tmp[k++] = array[left++];
+	/**
+	 * 
+	 * @param low
+	 * @param middle
+	 * @param high
+	 */
+	  private void merge(int low, int middle, int high) {
+		  T[] helper = datos;
+	    for (int i = low; i <= high; i++) {
+	      helper[i] = datos[i];
+	    }
 
-		        while(right <= rightEnd)  // Copy rest of right half
-		            tmp[k++] = array[right++];
-
-		        // Copy tmp back
-		        for(int i = 0; i < num; i++, rightEnd--){
-		        	array[rightEnd] = (T) tmp[rightEnd];
-		        }
-		            
-		        return array;
-		}
-
+	    int i = low;
+	    int j = middle + 1;
+	    int k = low;
+	    while (i <= middle && j <= high) {
+	      if ((int)helper[i] <= (int)helper[j]) {
+	        datos[k] = helper[i];
+	        i++;
+	      } else {
+	        datos[k] = helper[j];
+	        j++;
+	      }
+	      k++;
+	    }
+	    while (i <= middle) {
+	      datos[k] = helper[i];
+	      k++;
+	      i++;
+	    }
+	  }
+	
 	@Override
 	public T[] QuickSort(T[] array) {
 		datos = array;
@@ -137,12 +156,6 @@ public class Sorts<T> implements I_Sorts<T> {
 	 * @param j
 	 */
 	private void swap(int i, int j) {
-		T temp = datos[i];
-		datos[i] = datos[j];
-		datos[j] = temp;
-	}
-	
-	private void swap1(datos, int i, int j) {
 		T temp = datos[i];
 		datos[i] = datos[j];
 		datos[j] = temp;

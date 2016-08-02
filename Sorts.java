@@ -63,29 +63,33 @@ public class Sorts<T> implements I_Sorts<T> {
 		}
 
 	@Override
-	public T[] MergeSort(T[] a, T[] tmp, int left, int right, int rightEnd) {
-			  int leftEnd = right - 1;
+		public T[] MergeSort(T[] array) {
+				Object[] tmp = array;
+			  	int left = ((int)array.length/2)-((int)array.length/4);
+			  	int right = ((int)array.length/2)+((int)array.length/4);
+			  	int rightEnd = ((int)array.length/2)+((int)array.length/4)-1;
+				int leftEnd = right - 1;
 		        int k = left;
 		        int num = rightEnd - left + 1;
 
 		        while(left <= leftEnd && right <= rightEnd)
-		            if((int)a[left] <=(int)a[right])
-		                tmp[k++] = a[left++];
+		            if((int)array[left] <=(int)array[right])
+		                tmp[k++] = array[left++];
 		            else
-		                tmp[k++] = a[right++];
+		                tmp[k++] = array[right++];
 
 		        while(left <= leftEnd)    // Copy rest of first half
-		            tmp[k++] = a[left++];
+		            tmp[k++] = array[left++];
 
 		        while(right <= rightEnd)  // Copy rest of right half
-		            tmp[k++] = a[right++];
+		            tmp[k++] = array[right++];
 
 		        // Copy tmp back
 		        for(int i = 0; i < num; i++, rightEnd--){
-		            a[rightEnd] = tmp[rightEnd];
+		        	array[rightEnd] = (T) tmp[rightEnd];
 		        }
 		            
-		        return a;
+		        return array;
 		}
 
 	@Override

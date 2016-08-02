@@ -1,7 +1,10 @@
 /**
- * @author carlos
- *
- */
+*MainHDT3, Clase Driver 
+*@version: 2.0
+*@author: Luis Sierra, 131074 // Carlos Solorzano, 08832 // Steven Rubio, 15044 // Diego Lopez, 141222
+*@since 2016-08-01
+*/
+
 import static java.lang.System.*;
 import java.util.Scanner;
 public class Main {
@@ -11,7 +14,7 @@ public class Main {
 	public static void main(String[] args) {
 		int options = 0;
 		Scanner sc = new Scanner(System.in);
-		Random<Integer> random;
+		RandomX<Integer> random;
 		Sorts<Integer> sorts = new Sorts<Integer>();
 		while (options != 6) {
 			out.println("1. Crear archivo");
@@ -34,7 +37,7 @@ public class Main {
 							sc.nextLine();
 						}	
 					}
-					random = new Random<Integer>(cant);
+					random = new RandomX<Integer>(cant);
 					random.CrearArchivo("random.txt");
 					out.println("Datos: " + random.getCantRandom());
 					break;

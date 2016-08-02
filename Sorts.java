@@ -27,7 +27,7 @@ public class Sorts<T> implements I_Sorts<T> {
 			max = 0;
 			for(index = 1; index < nOrdenados; index ++)
 			{
-				if (datos[max] < datos[index]) 
+				if ((int)datos[max] < (int)datos[index]) 
 				{
 				max = index;
 				}
@@ -40,53 +40,53 @@ public class Sorts<T> implements I_Sorts<T> {
 		
 
 	@Override
-	public T[] InsertionSort(T[] array) {
-		// TODO Auto-generated method stub
-		datos=array;
-		int numerosOrd = 1;
-		int index;
-		while(numerosOrd < n){
-			int temp = data [numerosOrd];
-			for (index = numerosOrd; index > 0; index--){
-				if (temp < data[index - 1]){
-					data [index]=data[index-a];
+		public T[] InsertionSort(T[] array) {
+			// TODO Auto-generated method stub
+			datos = array;
+			int numerosOrd = 1;
+			int index;
+			while(numerosOrd < n){
+				int temp = (int) datos[numerosOrd];
+				for (index = numerosOrd; index > 0; index--){
+					if (temp < (int)datos[index - 1]){
+						datos [index]=datos[index-n];
+					}else {
+						break;
+					}
 				}
-				else {
-					break;
-				}
+				int x = (int)datos[index];
+				x =temp;
+				numerosOrd++;
 			}
-			data[index]=temp;
-			numerosOrd++;
+			
+			return null;
 		}
-		
-		return null;
-	}
 
 	@Override
-public T[] MergeSort(T[] a, T[] tmp, int left, int right, int rightEnd) {
-		  int leftEnd = right - 1;
-	        int k = left;
-	        int num = rightEnd - left + 1;
+	public T[] MergeSort(T[] a, T[] tmp, int left, int right, int rightEnd) {
+			  int leftEnd = right - 1;
+		        int k = left;
+		        int num = rightEnd - left + 1;
 
-	        while(left <= leftEnd && right <= rightEnd)
-	            if(a[left].compareTo\(a[right]) <= 0)
-	                tmp[k++] = a[left++];
-	            else
-	                tmp[k++] = a[right++];
+		        while(left <= leftEnd && right <= rightEnd)
+		            if((int)a[left] <=(int)a[right])
+		                tmp[k++] = a[left++];
+		            else
+		                tmp[k++] = a[right++];
 
-	        while(left <= leftEnd)    // Copy rest of first half
-	            tmp[k++] = a[left++];
+		        while(left <= leftEnd)    // Copy rest of first half
+		            tmp[k++] = a[left++];
 
-	        while(right <= rightEnd)  // Copy rest of right half
-	            tmp[k++] = a[right++];
+		        while(right <= rightEnd)  // Copy rest of right half
+		            tmp[k++] = a[right++];
 
-	        // Copy tmp back
-	        for(int i = 0; i < num; i++, rightEnd--){
-	            a[rightEnd] = tmp[rightEnd];
-	        }
-	            
-	        return a;
-	}
+		        // Copy tmp back
+		        for(int i = 0; i < num; i++, rightEnd--){
+		            a[rightEnd] = tmp[rightEnd];
+		        }
+		            
+		        return a;
+		}
 
 	@Override
 	public T[] QuickSort(T[] array) {

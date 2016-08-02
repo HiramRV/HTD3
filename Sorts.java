@@ -40,7 +40,7 @@ public class Sorts<T> implements I_Sorts<T> {
 		
 
 	@Override
-		public T[] InsertionSort(T[] array) {
+		public T[] InsertionSort(T[] array, int n) {
 			// TODO Auto-generated method stub
 			datos = array;
 			int numerosOrd = 1;

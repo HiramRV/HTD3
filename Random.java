@@ -1,22 +1,33 @@
+/**
+*Random, Esta calse genera el archivo con los numeros random 
+*@version: 3.0
+*@author: Luis Sierra, 131074 // Carlos Solorzano, 08832 // Steven Rubio, 15044 // Diego Lopez, 141222
+*@since 2016-08-01
+*/
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.lang.reflect.Array;
 import java.util.Random;
-
-
 import static java.lang.System.*;
 
-/**
- * @author carlos
- * @param <T>
- *
- */
-public class Random<T> {
+
+public class RandomX<T> {
 
 	private int cantRandom;
 	private Class<T> rand;
+	
+	/**
+	 * 
+	 * Constructor 
+	 */
+	public RandomX(int n){
+		this.cantRandom = n;
 	
 	/**
 	 * 
